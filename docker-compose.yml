@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  hysteria:
+    image: liyuanbiao/hysteria:latest
+    container_name: hysteria2
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./config.yaml:/etc/hysteria/server.yaml
+      - /etc/letsencrypt/:/etc/letsencrypt/
+    command: server -c /etc/hysteria/server.yaml

@@ -1,0 +1,21 @@
+# listen: :443 
+
+tls:
+  cert: /etc/letsencrypt/live/example.com/fullchain.pem 
+  key: /etc/letsencrypt/live/example.com/privkey.pem
+
+auth:
+  type: password
+  password: WykDPYbZjR7b9QMsEFWj
+
+masquerade: 
+  type: proxy
+  proxy:
+    url: https://www.bilibili.com/ 
+    rewriteHost: true
+
+acl:
+  inline: 
+    - reject(all, udp/443)
+    - reject(geoip:cn)
+
